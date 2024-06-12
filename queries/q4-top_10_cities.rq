@@ -1,0 +1,11 @@
+PREFIX sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#>
+
+SELECT ?city (COUNT(?scientist) AS ?nobelCount)
+WHERE {
+  ?scientist a sdo:Scientist;
+             sdo:isFrom ?city;
+             sdo:hasWonPrize ?prize.
+  ?prize a sdo:NobelPrize.
+}
+GROUP BY ?city
+ORDER BY DESC(?nobelCount)

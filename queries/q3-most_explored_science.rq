@@ -1,0 +1,11 @@
+PREFIX sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#>
+
+SELECT ?science (COUNT(?experiment) AS ?researchCount)
+WHERE {
+  ?experiment a sdo:Experiment;
+              sdo:isConductedBy ?scientist.
+  ?scientist a sdo:Scientist;
+              sdo:study ?science.
+}
+GROUP BY ?science
+ORDER BY DESC(?researchCount)

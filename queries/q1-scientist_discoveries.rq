@@ -1,0 +1,10 @@
+PREFIX sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#>
+
+SELECT ?discovery ?scientist ?prize ?year
+WHERE {
+  ?discovery a sdo:ScientificDiscovery;
+             sdo:discoveredInYear ?year;
+             sdo:hasRecognition ?prize.
+  ?scientist a sdo:Scientist;
+             sdo:discover ?discovery.
+}

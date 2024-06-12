@@ -1,0 +1,13 @@
+PREFIX sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?state (COUNT(?discovery) AS ?discoveryCount)
+WHERE {
+  ?scientist a sdo:Scientist;
+         sdo:discover ?discovery;
+         sdo:isFrom ?city.
+  ?state a schema:State;
+         sdo:hasCity ?city.
+}
+GROUP BY ?state
+ORDER BY DESC(?discoveryCount)

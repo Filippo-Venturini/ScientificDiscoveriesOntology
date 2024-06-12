@@ -1,0 +1,12 @@
+PREFIX sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#>
+PREFIX foaf: <http://xmlns.com/foaf/spec/>
+
+SELECT ?organization
+WHERE {
+  ?organization a foaf:Organization;
+                sdo:finances ?researchGroup.
+  ?researchGroup a sdo:ResearchGroup;
+                 sdo:hasMember ?scientist.
+  ?scientist a sdo:Scientist;
+             sdo:hasWonPrize ?prize.
+}

@@ -1,0 +1,13 @@
+PREFIX sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#>
+
+SELECT ?science (COUNT(DISTINCT ?prize) AS ?nobelCount) (COUNT(DISTINCT ?experiment) AS ?researchCount)
+WHERE {
+  ?scientist a sdo:Scientist;
+             sdo:study ?science;
+             sdo:hasWonPrize ?prize.
+  ?prize a sdo:NobelPrize.
+  ?experiment a sdo:Experiment;
+              sdo:isConductedBy ?scientist.
+}
+GROUP BY ?science
+ORDER BY ?nobelCount ?researchCount

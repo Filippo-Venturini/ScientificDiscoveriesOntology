@@ -1,0 +1,9 @@
+PREFIX sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#>
+
+SELECT ?journal
+WHERE {
+  ?discovery a sdo:ScientificDiscovery;
+             sdo:hasRecognition ?prize;
+             sdo:isPublishedBy ?journal.
+  ?prize a sdo:NobelPrize.
+}
