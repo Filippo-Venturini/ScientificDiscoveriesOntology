@@ -1,0 +1,998 @@
+@prefix : <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdo: <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology/> .
+
+<http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology> rdf:type owl:Ontology ;
+                                                                                    terms:publisher "Filippo Venturini"@en ;
+                                                                                    terms:title "Scientific Discoveries Ontology"@en ;
+                                                                                    rdfs:comment "SDO is an ontology for model all the concepts related to Scientific Discoveries, like Scientist, Scientific Tool and so on."@en ;
+                                                                                    owl:versionInfo "1.0.0"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/issued
+terms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+terms:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+terms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#awardedForScience
+sdo:awardedForScience rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      owl:inverseOf sdo:prizeAwarded ;
+                      rdfs:domain sdo:Prize ;
+                      rdfs:range sdo:Science .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#conducts
+sdo:conducts rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf sdo:isConductedBy ;
+             rdfs:domain sdo:Scientist ;
+             rdfs:range sdo:Experiment .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#discover
+sdo:discover rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf sdo:discoveredBy .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#discoveredBy
+sdo:discoveredBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#discoveredInYear
+sdo:discoveredInYear rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     owl:inverseOf sdo:hasDiscovery ;
+                     rdfs:domain sdo:ScientificDiscovery ;
+                     rdfs:range <http://purl.obolibrary.org/obo/UO_0000036> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#finances
+sdo:finances rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf sdo:isFinancedBy .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasAwardYear
+sdo:hasAwardYear rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 owl:inverseOf sdo:hasAwardedPrize ;
+                 rdfs:domain sdo:Prize ;
+                 rdfs:range <http://purl.obolibrary.org/obo/UO_0000036> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasAwardedPrize
+sdo:hasAwardedPrize rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasCity
+sdo:hasCity rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf sdo:ofState .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasDiscovery
+sdo:hasDiscovery rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasMember
+sdo:hasMember rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf sdo:isMemberOf .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasRecognition
+sdo:hasRecognition rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   owl:inverseOf sdo:recognizesDiscovery ;
+                   rdfs:domain sdo:ScientificDiscovery ;
+                   rdfs:range sdo:Prize .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasResident
+sdo:hasResident rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:inverseOf sdo:isFrom .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasWonPrize
+sdo:hasWonPrize rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:inverseOf sdo:prizeWonBy .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#invent
+sdo:invent rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf sdo:isInventedBy .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isConductedBy
+sdo:isConductedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isFinancedBy
+sdo:isFinancedBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain <http://purl.org/vocab/aiiso/schema#ResearchGroup> ;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Organization> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isFrom
+sdo:isFrom rdf:type owl:ObjectProperty ;
+           rdfs:domain sdo:Scientist ;
+           rdfs:range <https://schema.org/City> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isInventedBy
+sdo:isInventedBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain sdo:ScientificTool ;
+                 rdfs:range sdo:Scientist .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isMemberOf
+sdo:isMemberOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain sdo:Scientist ;
+               rdfs:range <http://purl.org/vocab/aiiso/schema#ResearchGroup> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isPublishedBy
+sdo:isPublishedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  owl:inverseOf sdo:publish ;
+                  rdfs:domain sdo:ScientificDiscovery ;
+                  rdfs:range sdo:ScientificJournal .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isStudiedBy
+sdo:isStudiedBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:inverseOf sdo:study .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isSupportedBy
+sdo:isSupportedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  owl:inverseOf sdo:supports .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isUsedIn
+sdo:isUsedIn rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf sdo:uses ;
+             rdfs:domain sdo:ScientificTool ;
+             rdfs:range sdo:Experiment .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#leadsTo
+sdo:leadsTo rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf sdo:ledBy ;
+            rdfs:domain sdo:Experiment ;
+            rdfs:range sdo:ScientificDiscovery .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ledBy
+sdo:ledBy rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ofState
+sdo:ofState rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain <https://schema.org/City> ;
+            rdfs:range <https://schema.org/State> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#performs
+sdo:performs rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:range sdo:Experiment .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#prizeAwarded
+sdo:prizeAwarded rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#prizeWonBy
+sdo:prizeWonBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#publish
+sdo:publish rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#recognizesDiscovery
+sdo:recognizesDiscovery rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#study
+sdo:study rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain sdo:Scientist ;
+          rdfs:range sdo:Science .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#supports
+sdo:supports rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain sdo:ScientificDiscovery ;
+             rdfs:range sdo:ScientificLaw .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#uses
+sdo:uses rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#impactFactor
+sdo:impactFactor rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain sdo:ScientificJournal ;
+                 rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#numberOfPubblications
+sdo:numberOfPubblications rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:domain sdo:Scientist ;
+                          rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.obolibrary.org/obo/UO_0000036
+<http://purl.obolibrary.org/obo/UO_0000036> rdf:type owl:Class ;
+                                            rdfs:comment "\"A time unit which is equal to 12 months which in science is taken to be equal to 365.25 days.\" [Wikipedia:Wikipedia]" ;
+                                            rdfs:label "uo:Year" .
+
+
+###  http://purl.org/vocab/aiiso/schema#College
+<http://purl.org/vocab/aiiso/schema#College> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization> ;
+                                             terms:issued "2008-05-14" ;
+                                             rdfs:comment "A College is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a college." ;
+                                             rdfs:isDefinedBy <http://purl.org/vocab/aiiso/schema#> ;
+                                             rdfs:label "aiiso:College"@en .
+
+
+###  http://purl.org/vocab/aiiso/schema#Institute
+<http://purl.org/vocab/aiiso/schema#Institute> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization> ;
+                                               terms:issued "2008-05-14" ;
+                                               rdfs:comment "An Institute is a group of people recognised by an organization as forming a cohesive group referred to by the organization as an institute." ;
+                                               rdfs:isDefinedBy <http://purl.org/vocab/aiiso/schema#> ;
+                                               rdfs:label "aiiso:Institute"@en .
+
+
+###  http://purl.org/vocab/aiiso/schema#ResearchGroup
+<http://purl.org/vocab/aiiso/schema#ResearchGroup> rdf:type owl:Class ;
+                                                   terms:issued "2008-05-14" ;
+                                                   rdfs:comment "A Research Group is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a research group." ;
+                                                   rdfs:isDefinedBy <http://purl.org/vocab/aiiso/schema#> ;
+                                                   rdfs:label "aiiso:Research Group"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Experiment
+sdo:Experiment rdf:type owl:Class ;
+               rdfs:comment "An experiment is a scientific procedure undertaken to test a hypothesis and observe the outcomes."@en ;
+               rdfs:label "Experiment"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#NobelPrize
+sdo:NobelPrize rdf:type owl:Class ;
+               rdfs:subClassOf sdo:Prize ;
+               rdfs:comment "A prestigious international award given annually in several categories, including Physics, Chemistry, and Medicine, among others."@en ;
+               rdfs:label "NobelPrize"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#PioneeringScientist
+sdo:PioneeringScientist rdf:type owl:Class ;
+                        rdfs:subClassOf sdo:Scientist ;
+                        rdfs:comment "A pioneer scientist is one of the first to explore or innovate in a particular area of scientific research, often leading to significant advancements."@en ;
+                        rdfs:label "PioneeringScientist"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Prize
+sdo:Prize rdf:type owl:Class ;
+          rdfs:comment "An award given in recognition of scientific achievement and excellence."@en ;
+          rdfs:label "Prize"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#PrizeContributingScientificTool
+sdo:PrizeContributingScientificTool rdf:type owl:Class ;
+                                    rdfs:subClassOf sdo:ScientificTool ;
+                                    rdfs:comment "A prize-contributing scientific tool is an instrument or device that has significantly contributed to the achievements recognized by a scientific prize."@en ;
+                                    rdfs:label "PrizeContributingScientificTool"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#RoyalMedal
+sdo:RoyalMedal rdf:type owl:Class ;
+               rdfs:subClassOf sdo:Prize ;
+               rdfs:comment "An award given by the Royal Society for outstanding achievements in scientific research."@en ;
+               rdfs:label "RoyalMedal"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Science
+sdo:Science rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ScientificDiscovery
+sdo:ScientificDiscovery rdf:type owl:Class ;
+                        rdfs:comment "The process or result of finding new knowledge in the field of science."@en ;
+                        rdfs:label "ScientificDiscovery"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ScientificJournal
+sdo:ScientificJournal rdf:type owl:Class ;
+                      rdfs:comment "Periodical publication intended to further the progress of science, usually by reporting new research."@en ;
+                      rdfs:label "ScientificJournal"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ScientificLaw
+sdo:ScientificLaw rdf:type owl:Class ;
+                  rdfs:comment "A principle based on repeated experimental observations that describes some aspect of the world."@en ;
+                  rdfs:label "ScientificLaw"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ScientificTool
+sdo:ScientificTool rdf:type owl:Class ;
+                   rdfs:comment "A scientific tool is an instrument or device used for conducting scientific research and experiments."@en ;
+                   rdfs:label "ScientificTool"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Scientist
+sdo:Scientist rdf:type owl:Class ;
+              rdfs:comment "An individual who conducts scientific research to advance knowledge in their field of interest."@en ;
+              rdfs:label "Scientist"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#University
+sdo:University rdf:type owl:Class ;
+               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization> ;
+               rdfs:comment "A university is an institution of higher education and research that awards academic degrees in various fields."@en ;
+               rdfs:label "University"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+<http://xmlns.com/foaf/0.1/Organization> rdf:type owl:Class ;
+                                         rdfs:comment "The foaf:Organization class represents a kind of foaf:Agent corresponding to social instititutions such as companies, societies etc." ;
+                                         rdfs:isDefinedBy "http://xmlns.com/foaf/spec/" ;
+                                         rdfs:label "foaf:Organization" .
+
+
+###  https://schema.org/City
+<https://schema.org/City> rdf:type owl:Class ;
+                          rdfs:comment "A city or town."@en ;
+                          rdfs:isDefinedBy "https://schema.org/" ;
+                          rdfs:label "schema:City"@en .
+
+
+###  https://schema.org/State
+<https://schema.org/State> rdf:type owl:Class ;
+                           rdfs:comment "A state or province of a country."@en ;
+                           rdfs:isDefinedBy "https://schema.org/" ;
+                           rdfs:label "schema:State"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#AlbertEinstein
+sdo:AlbertEinstein rdf:type owl:NamedIndividual ,
+                            sdo:Scientist ;
+                   sdo:conducts sdo:PhotoelectricExperiment ;
+                   sdo:isFrom sdo:Berlin ;
+                   sdo:isMemberOf sdo:EinsteinResearchGroup ;
+                   sdo:study sdo:Physics ;
+                   sdo:numberOfPubblications 20 .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Berlin
+sdo:Berlin rdf:type owl:NamedIndividual ,
+                    <https://schema.org/City> ;
+           sdo:hasResident sdo:AlbertEinstein ;
+           sdo:ofState sdo:Germany .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Biology
+sdo:Biology rdf:type owl:NamedIndividual ,
+                     sdo:Science .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Chemistry
+sdo:Chemistry rdf:type owl:NamedIndividual ,
+                       sdo:Science ;
+              sdo:isStudiedBy sdo:MarieCurie ;
+              sdo:prizeAwarded sdo:Radioactivity_Nobel .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#CurieResearchGroup
+sdo:CurieResearchGroup rdf:type owl:NamedIndividual ,
+                                <http://purl.org/vocab/aiiso/schema#ResearchGroup> ;
+                       sdo:hasMember sdo:MarieCurie ;
+                       sdo:isFinancedBy sdo:SorbonneUniversity .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#EinsteinResearchGroup
+sdo:EinsteinResearchGroup rdf:type owl:NamedIndividual ,
+                                   <http://purl.org/vocab/aiiso/schema#ResearchGroup> ;
+                          sdo:hasMember sdo:AlbertEinstein ;
+                          sdo:isFinancedBy sdo:PrincetonUniversity .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#FoucaultPendulum
+sdo:FoucaultPendulum rdf:type owl:NamedIndividual ,
+                              sdo:ScientificTool ;
+                     sdo:isInventedBy sdo:LeonFoucault ;
+                     sdo:isUsedIn sdo:GravityExperiment .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#France
+sdo:France rdf:type owl:NamedIndividual ,
+                    <https://schema.org/State> ;
+           sdo:hasCity sdo:Paris .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#GeigerCounter
+sdo:GeigerCounter rdf:type owl:NamedIndividual ,
+                           sdo:ScientificTool ;
+                  sdo:isInventedBy sdo:HansGeiger ;
+                  sdo:isUsedIn sdo:RadioactivityExperiment .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Germany
+sdo:Germany rdf:type owl:NamedIndividual ,
+                     <https://schema.org/State> ;
+            sdo:hasCity sdo:Berlin .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#GravityExperiment
+sdo:GravityExperiment rdf:type owl:NamedIndividual ,
+                               sdo:Experiment ;
+                      sdo:isConductedBy sdo:IsaacNewton ;
+                      sdo:leadsTo sdo:LawsOfMotion ;
+                      sdo:uses sdo:FoucaultPendulum .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#HansGeiger
+sdo:HansGeiger rdf:type owl:NamedIndividual ,
+                        sdo:Scientist ;
+               sdo:invent sdo:GeigerCounter .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#IsaacNewton
+sdo:IsaacNewton rdf:type owl:NamedIndividual ,
+                         sdo:Scientist ;
+                sdo:conducts sdo:GravityExperiment ;
+                sdo:isFrom sdo:London ;
+                sdo:study sdo:Physics ;
+                sdo:numberOfPubblications 3 .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#JuliusElster
+sdo:JuliusElster rdf:type owl:NamedIndividual ,
+                          sdo:Scientist ;
+                 sdo:invent sdo:Photocell .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#LawOfUniversalGravitation
+sdo:LawOfUniversalGravitation rdf:type owl:NamedIndividual ,
+                                       sdo:ScientificLaw ;
+                              sdo:isSupportedBy sdo:LawsOfMotion .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#LawsOfMotion
+sdo:LawsOfMotion rdf:type owl:NamedIndividual ,
+                          sdo:ScientificDiscovery ;
+                 sdo:discoveredInYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1687> ;
+                 sdo:hasRecognition sdo:LawsOfMotions_Medal ;
+                 sdo:isPublishedBy sdo:Science ;
+                 sdo:ledBy sdo:GravityExperiment ;
+                 sdo:supports sdo:LawOfUniversalGravitation .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#LawsOfMotions_Medal
+sdo:LawsOfMotions_Medal rdf:type owl:NamedIndividual ,
+                                 sdo:Prize ,
+                                 sdo:RoyalMedal ;
+                        sdo:awardedForScience sdo:Physics ;
+                        sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1687> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#LeonFoucault
+sdo:LeonFoucault rdf:type owl:NamedIndividual ,
+                          sdo:Scientist ;
+                 sdo:invent sdo:FoucaultPendulum .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#London
+sdo:London rdf:type owl:NamedIndividual ,
+                    <https://schema.org/City> ;
+           sdo:hasResident sdo:IsaacNewton ;
+           sdo:ofState sdo:UnitedKingdom .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#MarieCurie
+sdo:MarieCurie rdf:type owl:NamedIndividual ,
+                        sdo:Scientist ;
+               sdo:conducts sdo:RadioactivityExperiment ;
+               sdo:isFrom sdo:Paris ;
+               sdo:isMemberOf sdo:CurieResearchGroup ;
+               sdo:study sdo:Chemistry ;
+               sdo:numberOfPubblications 7 .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#MassEnergyEquivalence
+sdo:MassEnergyEquivalence rdf:type owl:NamedIndividual ,
+                                   sdo:ScientificLaw ;
+                          sdo:isSupportedBy sdo:TheoryOfRelativity .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Nature
+sdo:Nature rdf:type owl:NamedIndividual ,
+                    sdo:ScientificJournal ;
+           sdo:publish sdo:Radioactivity ;
+           sdo:impactFactor "10.2"^^xsd:float .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Paris
+sdo:Paris rdf:type owl:NamedIndividual ,
+                   <https://schema.org/City> ;
+          sdo:hasResident sdo:MarieCurie ;
+          sdo:ofState sdo:France .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Photocell
+sdo:Photocell rdf:type owl:NamedIndividual ,
+                       sdo:ScientificTool ;
+              sdo:isInventedBy sdo:JuliusElster ;
+              sdo:isUsedIn sdo:PhotoelectricExperiment .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#PhotoelectricExperiment
+sdo:PhotoelectricExperiment rdf:type owl:NamedIndividual ,
+                                     sdo:Experiment ;
+                            sdo:isConductedBy sdo:AlbertEinstein ;
+                            sdo:leadsTo sdo:TheoryOfRelativity ;
+                            sdo:uses sdo:Photocell .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#PhysicalReviewLetters
+sdo:PhysicalReviewLetters rdf:type owl:NamedIndividual ,
+                                   sdo:ScientificJournal ;
+                          sdo:publish sdo:TheoryOfRelativity ;
+                          sdo:impactFactor "12.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Physics
+sdo:Physics rdf:type owl:NamedIndividual ,
+                     sdo:Science ;
+            sdo:isStudiedBy sdo:AlbertEinstein ,
+                            sdo:IsaacNewton ;
+            sdo:prizeAwarded sdo:LawsOfMotions_Medal ,
+                             sdo:Relativity_Nobel .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#PrincetonUniversity
+sdo:PrincetonUniversity rdf:type owl:NamedIndividual ,
+                                 sdo:University ;
+                        sdo:finances sdo:EinsteinResearchGroup .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#RadioactiveDecayLaw
+sdo:RadioactiveDecayLaw rdf:type owl:NamedIndividual ,
+                                 sdo:ScientificLaw ;
+                        sdo:isSupportedBy sdo:Radioactivity .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Radioactivity
+sdo:Radioactivity rdf:type owl:NamedIndividual ,
+                           sdo:ScientificDiscovery ;
+                  sdo:discoveredInYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1896> ;
+                  sdo:hasRecognition sdo:Radioactivity_Nobel ;
+                  sdo:isPublishedBy sdo:Nature ;
+                  sdo:ledBy sdo:RadioactivityExperiment ;
+                  sdo:supports sdo:RadioactiveDecayLaw .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#RadioactivityExperiment
+sdo:RadioactivityExperiment rdf:type owl:NamedIndividual ,
+                                     sdo:Experiment ;
+                            sdo:isConductedBy sdo:MarieCurie ;
+                            sdo:leadsTo sdo:Radioactivity ;
+                            sdo:uses sdo:GeigerCounter .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Radioactivity_Nobel
+sdo:Radioactivity_Nobel rdf:type owl:NamedIndividual ,
+                                 sdo:NobelPrize ,
+                                 sdo:Prize ;
+                        sdo:awardedForScience sdo:Chemistry ;
+                        sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1903> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Relativity_Nobel
+sdo:Relativity_Nobel rdf:type owl:NamedIndividual ,
+                              sdo:NobelPrize ,
+                              sdo:Prize ;
+                     sdo:awardedForScience sdo:Physics ;
+                     sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1921> .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Science
+sdo:Science rdf:type owl:NamedIndividual ,
+                     sdo:ScientificJournal ;
+            sdo:publish sdo:LawsOfMotion ;
+            sdo:impactFactor "9.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#SorbonneUniversity
+sdo:SorbonneUniversity rdf:type owl:NamedIndividual ,
+                                sdo:University ;
+                       sdo:finances sdo:CurieResearchGroup .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#TheoryOfRelativity
+sdo:TheoryOfRelativity rdf:type owl:NamedIndividual ,
+                                sdo:ScientificDiscovery ;
+                       sdo:discoveredInYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1905> ;
+                       sdo:hasRecognition sdo:Relativity_Nobel ;
+                       sdo:isPublishedBy sdo:PhysicalReviewLetters ;
+                       sdo:ledBy sdo:PhotoelectricExperiment ;
+                       sdo:supports sdo:MassEnergyEquivalence .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#UnitedKingdom
+sdo:UnitedKingdom rdf:type owl:NamedIndividual ,
+                           <https://schema.org/State> ;
+                  sdo:hasCity sdo:London .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#UniversityOfCambridge
+sdo:UniversityOfCambridge rdf:type owl:NamedIndividual ,
+                                   sdo:University .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1687
+<http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1687> rdf:type owl:NamedIndividual ,
+                                                                                                 <http://purl.obolibrary.org/obo/UO_0000036> ;
+                                                                                        sdo:hasAwardedPrize sdo:LawsOfMotions_Medal ;
+                                                                                        sdo:hasDiscovery sdo:LawsOfMotion .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1896
+<http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1896> rdf:type owl:NamedIndividual ,
+                                                                                                 <http://purl.obolibrary.org/obo/UO_0000036> ;
+                                                                                        sdo:hasDiscovery sdo:Radioactivity .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1903
+<http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1903> rdf:type owl:NamedIndividual ,
+                                                                                                 <http://purl.obolibrary.org/obo/UO_0000036> ;
+                                                                                        sdo:hasAwardedPrize sdo:Radioactivity_Nobel .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1905
+<http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1905> rdf:type owl:NamedIndividual ,
+                                                                                                 <http://purl.obolibrary.org/obo/UO_0000036> ;
+                                                                                        sdo:hasDiscovery sdo:TheoryOfRelativity .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1921
+<http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1921> rdf:type owl:NamedIndividual ,
+                                                                                                 <http://purl.obolibrary.org/obo/UO_0000036> ;
+                                                                                        sdo:hasAwardedPrize sdo:Relativity_Nobel .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+sdo:Science rdfs:comment "The systematic enterprise that builds and organizes knowledge in the form of testable explanations and predictions about the universe."@en ;
+            rdfs:label "Science"@en .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:s rdf:type swrl:Variable .
+
+:e rdf:type swrl:Variable .
+
+:d rdf:type swrl:Variable .
+
+:j rdf:type swrl:Variable .
+
+:p rdf:type swrl:Variable .
+
+:t rdf:type swrl:Variable .
+
+:if rdf:type swrl:Variable .
+
+:pubCount rdf:type swrl:Variable .
+
+:r rdf:type swrl:Variable .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Pioneering_Scientist" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate sdo:Scientist ;
+                           swrl:argument1 :s
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate sdo:conducts ;
+                                      swrl:argument1 :s ;
+                                      swrl:argument2 :e
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate sdo:leadsTo ;
+                                                 swrl:argument1 :e ;
+                                                 swrl:argument2 :d
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate sdo:isPublishedBy ;
+                                                            swrl:argument1 :d ;
+                                                            swrl:argument2 :j
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                       swrl:classPredicate sdo:ScientificJournal ;
+                                                                       swrl:argument1 :j
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                  swrl:propertyPredicate sdo:hasWonPrize ;
+                                                                                  swrl:argument1 :s ;
+                                                                                  swrl:argument2 :p
+                                                                                ] ;
+                                                                      rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                 rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                             swrl:propertyPredicate sdo:recognizesDiscovery ;
+                                                                                             swrl:argument1 :p ;
+                                                                                             swrl:argument2 :d
+                                                                                           ] ;
+                                                                                 rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                            rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                        swrl:classPredicate sdo:NobelPrize ;
+                                                                                                        swrl:argument1 :p
+                                                                                                      ] ;
+                                                                                            rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                       rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                                   swrl:propertyPredicate sdo:isUsedIn ;
+                                                                                                                   swrl:argument1 :t ;
+                                                                                                                   swrl:argument2 :e
+                                                                                                                 ] ;
+                                                                                                       rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                  rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                              swrl:classPredicate sdo:PrizeContributingScientificTool ;
+                                                                                                                              swrl:argument1 :t
+                                                                                                                            ] ;
+                                                                                                                  rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                             rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                                                                                         swrl:propertyPredicate sdo:impactFactor ;
+                                                                                                                                         swrl:argument1 :j ;
+                                                                                                                                         swrl:argument2 :if
+                                                                                                                                       ] ;
+                                                                                                                             rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                        rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                                                                                                                    swrl:builtin swrlb:greaterThanOrEqual ;
+                                                                                                                                                    swrl:arguments [ rdf:type rdf:List ;
+                                                                                                                                                                     rdf:first :if ;
+                                                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                                rdf:first 10 ;
+                                                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                                                              ]
+                                                                                                                                                                   ]
+                                                                                                                                                  ] ;
+                                                                                                                                        rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                   rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                                                                                                               swrl:propertyPredicate sdo:numberOfPubblications ;
+                                                                                                                                                               swrl:argument1 :s ;
+                                                                                                                                                               swrl:argument2 :pubCount
+                                                                                                                                                             ] ;
+                                                                                                                                                   rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                              rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                                                                                                                                          swrl:builtin swrlb:greaterThanOrEqual ;
+                                                                                                                                                                          swrl:arguments [ rdf:type rdf:List ;
+                                                                                                                                                                                           rdf:first :pubCount ;
+                                                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                                                      rdf:first 5 ;
+                                                                                                                                                                                                      rdf:rest rdf:nil
+                                                                                                                                                                                                    ]
+                                                                                                                                                                                         ]
+                                                                                                                                                                        ] ;
+                                                                                                                                                              rdf:rest rdf:nil
+                                                                                                                                                            ]
+                                                                                                                                                 ]
+                                                                                                                                      ]
+                                                                                                                           ]
+                                                                                                                ]
+                                                                                                     ]
+                                                                                          ]
+                                                                               ]
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate sdo:PioneeringScientist ;
+                           swrl:argument1 :s
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Prize_Contributing_Scientific_Tool" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate sdo:ScientificTool ;
+                           swrl:argument1 :t
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate sdo:isUsedIn ;
+                                      swrl:argument1 :t ;
+                                      swrl:argument2 :e
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate sdo:leadsTo ;
+                                                 swrl:argument1 :e ;
+                                                 swrl:argument2 :d
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate sdo:hasRecognition ;
+                                                            swrl:argument1 :d ;
+                                                            swrl:argument2 :p
+                                                          ] ;
+                                                rdf:rest rdf:nil
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate sdo:PrizeContributingScientificTool ;
+                           swrl:argument1 :t
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Prize_Winners" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate sdo:Scientist ;
+                           swrl:argument1 :s
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate sdo:conducts ;
+                                      swrl:argument1 :s ;
+                                      swrl:argument2 :e
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate sdo:leadsTo ;
+                                                 swrl:argument1 :e ;
+                                                 swrl:argument2 :d
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate sdo:hasRecognition ;
+                                                            swrl:argument1 :d ;
+                                                            swrl:argument2 :r
+                                                          ] ;
+                                                rdf:rest rdf:nil
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate sdo:hasWonPrize ;
+                           swrl:argument1 :s ;
+                           swrl:argument2 :r
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Scientist_ScientificDiscovery" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate sdo:Scientist ;
+                           swrl:argument1 :s
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate sdo:leadsTo ;
+                                      swrl:argument1 :e ;
+                                      swrl:argument2 :d
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate sdo:conducts ;
+                                                 swrl:argument1 :s ;
+                                                 swrl:argument2 :e
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate sdo:discover ;
+                           swrl:argument1 :s ;
+                           swrl:argument2 :d
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
