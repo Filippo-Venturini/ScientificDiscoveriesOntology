@@ -41,225 +41,322 @@ swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#awardedForScience
-sdo:awardedForScience rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf owl:topObjectProperty ;
-                      owl:inverseOf sdo:prizeAwarded ;
-                      rdfs:domain sdo:Prize ;
-                      rdfs:range sdo:Science .
-
-
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#conducts
 sdo:conducts rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              owl:inverseOf sdo:isConductedBy ;
+             rdf:type owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty ;
              rdfs:domain sdo:Scientist ;
-             rdfs:range sdo:Experiment .
+             rdfs:range sdo:Experiment ;
+             rdfs:comment "Specifies that a scientist conducts a particular experiment."@en ;
+             rdfs:label "conducts"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#discover
 sdo:discover rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             owl:inverseOf sdo:discoveredBy .
+             owl:inverseOf sdo:discoveredBy ;
+             rdfs:label "Connect the scientist to it's discoveries."@en ,
+                        "discover"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#discoveredBy
 sdo:discoveredBy rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf owl:topObjectProperty .
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:comment "Specify the scientist who made the discovery."@en ;
+                 rdfs:label "discoveredBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#discoveredInYear
 sdo:discoveredInYear rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf owl:topObjectProperty ;
                      owl:inverseOf sdo:hasDiscovery ;
+                     rdf:type owl:FunctionalProperty ,
+                              owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
                      rdfs:domain sdo:ScientificDiscovery ;
-                     rdfs:range <http://purl.obolibrary.org/obo/UO_0000036> .
+                     rdfs:range <http://purl.obolibrary.org/obo/UO_0000036> ;
+                     rdfs:comment "Indicates the year in which a scientific discovery was made."@en ;
+                     rdfs:label "discoveredInYear"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#finances
 sdo:finances rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             owl:inverseOf sdo:isFinancedBy .
+             owl:inverseOf sdo:isFinancedBy ;
+             rdfs:comment "Indicate which research group an organization is financing."@en ;
+             rdfs:label "finances"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasAwardYear
 sdo:hasAwardYear rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  owl:inverseOf sdo:hasAwardedPrize ;
+                 rdf:type owl:FunctionalProperty ,
+                          owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty ;
                  rdfs:domain sdo:Prize ;
-                 rdfs:range <http://purl.obolibrary.org/obo/UO_0000036> .
+                 rdfs:range <http://purl.obolibrary.org/obo/UO_0000036> ;
+                 rdfs:comment "Indicate the year in which the prize was won"@en ;
+                 rdfs:label "hasAwardYear"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasAwardedPrize
 sdo:hasAwardedPrize rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf owl:topObjectProperty .
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:comment "Specify the prizes won in that year."@en ;
+                    rdfs:label "hasAwardedPrice"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasCity
 sdo:hasCity rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            owl:inverseOf sdo:ofState .
+            owl:inverseOf sdo:ofState ;
+            rdfs:comment "Indicate what cities a state has."@en ;
+            rdfs:label "hasCity"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasDiscovery
 sdo:hasDiscovery rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf owl:topObjectProperty .
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:comment "Connect the year to the discoveries made."@en ;
+                 rdfs:label "hasDiscovery"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasMember
 sdo:hasMember rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
-              owl:inverseOf sdo:isMemberOf .
+              owl:inverseOf sdo:isMemberOf ;
+              rdfs:comment "Indicate which memer has a research group."@en ;
+              rdfs:label "hasMember"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasRecognition
 sdo:hasRecognition rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
                    owl:inverseOf sdo:recognizesDiscovery ;
+                   rdf:type owl:AsymmetricProperty ,
+                            owl:IrreflexiveProperty ;
                    rdfs:domain sdo:ScientificDiscovery ;
-                   rdfs:range sdo:Prize .
+                   rdfs:range sdo:Prize ;
+                   rdfs:comment "Shows that a scientific discovery has received recognition in the form of a prize."@en ;
+                   rdfs:label "hasRecognition"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasResident
 sdo:hasResident rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                owl:inverseOf sdo:isFrom .
+                owl:inverseOf sdo:isFrom ;
+                rdfs:comment "Connect the city to its residents"@en ;
+                rdfs:label "hasResident"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#hasWonPrize
 sdo:hasWonPrize rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                owl:inverseOf sdo:prizeWonBy .
+                owl:inverseOf sdo:prizeWonBy ;
+                rdfs:comment "Connect the scientist to the prize won."@en ;
+                rdfs:label "hasWonPrize"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#invent
 sdo:invent rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
-           owl:inverseOf sdo:isInventedBy .
+           owl:inverseOf sdo:isInventedBy ;
+           rdfs:comment "Indicate what scientific tool are invented by the scientist."@en ;
+           rdfs:label "invent"@en .
+
+
+###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isAwardedFor
+sdo:isAwardedFor rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 owl:inverseOf sdo:prizeAwarded ;
+                 rdf:type owl:FunctionalProperty ,
+                          owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty ;
+                 rdfs:domain sdo:Prize ;
+                 rdfs:range sdo:Science ;
+                 rdfs:comment "Specifies that a prize is awarded for a particular scientific discovery."@en ;
+                 rdfs:label "isAwardedFor"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isConductedBy
 sdo:isConductedBy rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf owl:topObjectProperty .
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:comment "Indicates who conducted the experiment."@en ;
+                  rdfs:label "isConductedBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isFinancedBy
 sdo:isFinancedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty ;
                  rdfs:domain <http://purl.org/vocab/aiiso/schema#ResearchGroup> ;
-                 rdfs:range <http://xmlns.com/foaf/0.1/Organization> .
+                 rdfs:range <http://xmlns.com/foaf/0.1/Organization> ;
+                 rdfs:comment "Indicate who financed the research group."@en ;
+                 rdfs:label "isFinancedBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isFrom
-sdo:isFrom rdf:type owl:ObjectProperty ;
+sdo:isFrom rdf:type owl:ObjectProperty ,
+                    owl:FunctionalProperty ,
+                    owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty ;
            rdfs:domain sdo:Scientist ;
-           rdfs:range <https://schema.org/City> .
+           rdfs:range <https://schema.org/City> ;
+           rdfs:comment "Indicates the city from which a scientist originates or is associated with."@en ;
+           rdfs:label "isFrom"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isInventedBy
 sdo:isInventedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty ;
                  rdfs:domain sdo:ScientificTool ;
-                 rdfs:range sdo:Scientist .
+                 rdfs:range sdo:Scientist ;
+                 rdfs:comment "Specifies that a scientific tool was invented by a scientist."@en ;
+                 rdfs:label "isInventedBy" .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isMemberOf
 sdo:isMemberOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:AsymmetricProperty ,
+                        owl:IrreflexiveProperty ;
                rdfs:domain sdo:Scientist ;
-               rdfs:range <http://purl.org/vocab/aiiso/schema#ResearchGroup> .
+               rdfs:range <http://purl.org/vocab/aiiso/schema#ResearchGroup> ;
+               rdfs:comment "Specifies to which research group the scientist is member."@en ;
+               rdfs:label "isMemberOf"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isPublishedBy
 sdo:isPublishedBy rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   owl:inverseOf sdo:publish ;
+                  rdf:type owl:AsymmetricProperty ,
+                           owl:IrreflexiveProperty ;
                   rdfs:domain sdo:ScientificDiscovery ;
-                  rdfs:range sdo:ScientificJournal .
+                  rdfs:range sdo:ScientificJournal ;
+                  rdfs:comment "Links a scientific discovery to the scientific journal where it is published."@en ;
+                  rdfs:label "isPublishedBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isStudiedBy
 sdo:isStudiedBy rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                owl:inverseOf sdo:study .
+                owl:inverseOf sdo:study ;
+                rdfs:comment "Specifies the scientists that studies this science."@en ;
+                rdfs:label "isStudiedBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isSupportedBy
 sdo:isSupportedBy rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
-                  owl:inverseOf sdo:supports .
+                  owl:inverseOf sdo:supports ;
+                  rdfs:comment "Specifies which scientific discoveries supports the law."@en ;
+                  rdfs:label "isSupportedBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#isUsedIn
 sdo:isUsedIn rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              owl:inverseOf sdo:uses ;
+             rdf:type owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty ;
              rdfs:domain sdo:ScientificTool ;
-             rdfs:range sdo:Experiment .
+             rdfs:range sdo:Experiment ;
+             rdfs:comment "Indicates that a scientific tool is used in an experiment."@en ;
+             rdfs:label "isUsedIn"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#leadsTo
 sdo:leadsTo rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             owl:inverseOf sdo:ledBy ;
+            rdf:type owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
             rdfs:domain sdo:Experiment ;
-            rdfs:range sdo:ScientificDiscovery .
+            rdfs:range sdo:ScientificDiscovery ;
+            rdfs:comment "Indicates that a scientific discovery leads to or results in an experiment."@en ;
+            rdfs:label "leadsTo"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ledBy
 sdo:ledBy rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty .
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:comment "Indicates which experiment lead in to the discovery."@en ;
+          rdfs:label "ledBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#ofState
 sdo:ofState rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
+            rdf:type owl:FunctionalProperty ,
+                     owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
             rdfs:domain <https://schema.org/City> ;
-            rdfs:range <https://schema.org/State> .
-
-
-###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#performs
-sdo:performs rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:range sdo:Experiment .
+            rdfs:range <https://schema.org/State> ;
+            rdfs:comment "Specifies the state to which a city belongs."@en ;
+            rdfs:label "ofState"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#prizeAwarded
-sdo:prizeAwarded rdf:type owl:ObjectProperty .
+sdo:prizeAwarded rdf:type owl:ObjectProperty ;
+                 rdfs:comment "Links to the science all the prize won in that field."@en ;
+                 rdfs:label "prizeAwarded"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#prizeWonBy
 sdo:prizeWonBy rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf owl:topObjectProperty .
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:comment "Indicate which scientist has won the prize."@en ;
+               rdfs:label "prizeWonBy"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#publish
 sdo:publish rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty .
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:comment "Specifies which discovery the journal published."@en ;
+            rdfs:label "publish"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#recognizesDiscovery
 sdo:recognizesDiscovery rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf owl:topObjectProperty .
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdfs:comment "Specifies which discovery is recognized by the prize."@en ;
+                        rdfs:label "recognizesDiscovery"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#study
 sdo:study rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty ;
           rdfs:domain sdo:Scientist ;
-          rdfs:range sdo:Science .
+          rdfs:range sdo:Science ;
+          rdfs:comment "Specify which science the scientist study."@en ;
+          rdfs:label "study"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#supports
 sdo:supports rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty ;
              rdfs:domain sdo:ScientificDiscovery ;
-             rdfs:range sdo:ScientificLaw .
+             rdfs:range sdo:ScientificLaw ;
+             rdfs:comment "Indicates whcich law the scientific discovery supports."@en ;
+             rdfs:label "supports"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#uses
 sdo:uses rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf owl:topObjectProperty .
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:comment "Specify which scientific tool is used during the experiment."@en ;
+         rdfs:label "uses"@en .
 
 
 #################################################################
@@ -540,8 +637,8 @@ sdo:LawsOfMotion rdf:type owl:NamedIndividual ,
 sdo:LawsOfMotions_Medal rdf:type owl:NamedIndividual ,
                                  sdo:Prize ,
                                  sdo:RoyalMedal ;
-                        sdo:awardedForScience sdo:Physics ;
-                        sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1687> .
+                        sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1687> ;
+                        sdo:isAwardedFor sdo:Physics .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#LeonFoucault
@@ -652,16 +749,16 @@ sdo:RadioactivityExperiment rdf:type owl:NamedIndividual ,
 sdo:Radioactivity_Nobel rdf:type owl:NamedIndividual ,
                                  sdo:NobelPrize ,
                                  sdo:Prize ;
-                        sdo:awardedForScience sdo:Chemistry ;
-                        sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1903> .
+                        sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1903> ;
+                        sdo:isAwardedFor sdo:Chemistry .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Relativity_Nobel
 sdo:Relativity_Nobel rdf:type owl:NamedIndividual ,
                               sdo:NobelPrize ,
                               sdo:Prize ;
-                     sdo:awardedForScience sdo:Physics ;
-                     sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1921> .
+                     sdo:hasAwardYear <http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#1921> ;
+                     sdo:isAwardedFor sdo:Physics .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#Science
