@@ -367,14 +367,18 @@ sdo:uses rdf:type owl:ObjectProperty ;
 sdo:impactFactor rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf owl:topDataProperty ;
                  rdfs:domain sdo:ScientificJournal ;
-                 rdfs:range xsd:float .
+                 rdfs:range xsd:float ;
+                 rdfs:comment "Indicates how much the journal is important globally."@en ;
+                 rdfs:label "impactFactor"@en .
 
 
 ###  http://www.semanticweb.org/filip/ontologies/2024/4/ScientificDiscoveriesOntology#numberOfPubblications
 sdo:numberOfPubblications rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
                           rdfs:domain sdo:Scientist ;
-                          rdfs:range xsd:integer .
+                          rdfs:range xsd:integer ;
+                          rdfs:comment "Number of pubblications of the scientist." ;
+                          rdfs:label "numberOfPubblications"@en .
 
 
 #################################################################
